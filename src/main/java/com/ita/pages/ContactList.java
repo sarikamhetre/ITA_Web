@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.ISelect;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.ita.base.TestBase;
@@ -26,6 +27,15 @@ public class ContactList extends TestBase{
 	@FindBy(xpath="//img[contains(@alt,'InTouchApp')]")
 	WebElement logo;
 	
+	@FindBy(xpath="//img[contains(@src, 'https://www.intouchapp.com/mugshot/key/1hii4wwbu9paeppxxxket0c1ja88yj7ri3nxr19772mvitez2c2k9ke6ky5mfhdw/')]")
+	WebElement dropdown;
+	
+	@FindBy(xpath="//*[@id='settings']/div/div[2]/a[8]")
+	WebElement logOut;
+	
+	@FindBy(xpath="//a[contains(@href,'/user/import/')]")
+	WebElement impContacts;
+	
 	public 	ContactList()
 	{
 		PageFactory.initElements(driver, this);
@@ -38,25 +48,18 @@ public class ContactList extends TestBase{
 		return userName;		
 	}
 	
-	public void createContact()
+	public void LogOut()
 	{ 
-		logo.click();
 		
-		WebDriverWait wait=new WebDriverWait(driver,20);
-		 
-		 
-		//Wait till the element is not visible
-		 
-		WebElement newContact=wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='main']/top-filter/div/ul/li[5]/button/text()")));
+		dropdown.click();
+		logOut.click();
 		
-		
-		newContact.click();
-	
-	
-		NameField.sendKeys("Sanikaa");
-		PhoneField.sendKeys("8768768");
-		SaveButton.click();
-		
+	}
+	public ImportContacts impContacts()
+	{
+		dropdown.click();
+		impContacts.click();
+		return new ImportContacts();
 	}
 	
 	

@@ -5,8 +5,9 @@
     <classes>
       <class name="com.ita.testcases.ContactListTest">
         <methods>
+          <include name="LogOutTest"/>
+          <include name="clear"/>
           <include name="setUp"/>
-          <include name="CreateContactTest"/>
         </methods>
       </class> <!-- com.ita.testcases.ContactListTest -->
     </classes>
